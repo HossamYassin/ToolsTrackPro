@@ -37,7 +37,6 @@ namespace ToolsTrackPro.API.Controllers
         public async Task<ActionResult<List<ToolTransactionDto>>> GetAllWithLatestTransactions()
         {
             var tools = await _mediator.Send(new GetAllToolsWithLatestTransactionsQuery());
-
             return Ok(new ApiResponse<List<ToolTransactionDto>>("success", tools));
         }
 

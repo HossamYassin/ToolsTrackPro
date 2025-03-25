@@ -1,10 +1,14 @@
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.SignalR;
+using ToolsTrackPro.API.Hub;
 using ToolsTrackPro.API.Models;
 using ToolsTrackPro.Application.DTOs;
+using ToolsTrackPro.Application.Features.Tools.Queries;
 using ToolsTrackPro.Application.Features.Transactions.Commands;
 using ToolsTrackPro.Application.Features.Transactions.Queries;
+using ToolsTrackPro.Domain.Entities;
 
 namespace ToolsTrackPro.API.Controllers
 {
@@ -14,9 +18,13 @@ namespace ToolsTrackPro.API.Controllers
     public class TransactionsController : ControllerBase
     {
         private readonly IMediator _mediator;
-        public TransactionsController(IMediator mediator)
+        private readonly IHubContext<ToolNotificationHub> _hubContext;
+
+        public TransactionsController(IMediator mediator,
+            IHubContext<ToolNotificationHub> hubContext)
         {
             _mediator = mediator;
+            _hubContext = hubContext;
         }
 
         /// <summary>
@@ -46,6 +54,13 @@ namespace ToolsTrackPro.API.Controllers
         public async Task<IActionResult> Return([FromBody] ReturnToolCommand retrun)
         {
             var added = await _mediator.Send(retrun);
+
+            if (added)
+            {
+                var tool = await _mediator.Send(new GetToolByIdQuery(retrun.ToolId));
+                await _hubContext.Clients.All.SendAsync("ToolAvailable", tool.Name);
+            }
+
             return Ok(new ApiResponse<ToolDto>(added ? "success" : "fail"));
         }
     }

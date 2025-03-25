@@ -11,7 +11,6 @@ namespace ToolsTrackPro.Application.Mappings
             CreateMap<Transaction, TransactionDto>().ReverseMap();
             CreateMap<User, UserDto>().ReverseMap();
             CreateMap<Tool, ToolDto>().ReverseMap();
-            CreateMap<Notification, NotificationDto>().ReverseMap();
             CreateMap<TransactionView, TransactionViewDto>().ReverseMap();
             CreateMap<ToolTransaction, ToolTransactionDto>().ReverseMap();
         }

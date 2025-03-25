@@ -3,6 +3,7 @@ using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using Serilog;
 using System.Text;
+using ToolsTrackPro.API.Hub;
 using ToolsTrackPro.API.Middlewares;
 using ToolsTrackPro.Application.DependencyInjection;
 using ToolsTrackPro.Infrastructure.DependencyInjection;
@@ -16,6 +17,7 @@ builder.Services.AddApplicationServices();
 builder.Services.AddInfrastructureServices(configuration);
 
 builder.Services.AddControllers();
+builder.Services.AddSignalR();
 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(c =>
@@ -115,5 +117,7 @@ app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();
+
+app.MapHub<ToolNotificationHub>("/toolNotificationHub");
 
 app.Run();
