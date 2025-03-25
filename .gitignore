@@ -1,0 +1,16 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/.vs
+/ToolsTrackPro/.vs/ToolsTrackPro
+/ToolsTrackPro/ToolsTrackPro.API/bin/Debug/net8.0
+/ToolsTrackPro/ToolsTrackPro.API/obj
+/ToolsTrackPro/ToolsTrackPro.Application/bin/Debug/net8.0
+/ToolsTrackPro/ToolsTrackPro.Application/obj
+/ToolsTrackPro/ToolsTrackPro.Domain/bin/Debug/net8.0
+/ToolsTrackPro/ToolsTrackPro.Domain/obj
+/ToolsTrackPro/ToolsTrackPro.Infrastructure/bin/Debug/net8.0
+/ToolsTrackPro/ToolsTrackPro.Infrastructure/obj
+/ToolsTrackPro/ToolsTrackPro.UnitTests/bin/Debug/net8.0
+/ToolsTrackPro/ToolsTrackPro.UnitTests/obj
