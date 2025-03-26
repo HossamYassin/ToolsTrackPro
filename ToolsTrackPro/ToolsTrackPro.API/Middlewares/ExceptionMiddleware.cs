@@ -23,7 +23,7 @@ namespace ToolsTrackPro.API.Middlewares
             }
             catch (Exception ex)
             {
-                Log.Error(ex, "An unhandled exception occurred. Request Path: {RequestPath}", context.Request.Path);
+                Log.Error(ex, $"An unhandled exception occurred. Request Path: ${context.Request.Path}, Message: ${ex.Message}, Stack: ${ex.StackTrace}");
                 await HandleExceptionAsync(context, ex);
             }
         }

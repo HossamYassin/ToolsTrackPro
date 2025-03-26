@@ -58,7 +58,7 @@ namespace ToolsTrackPro.API.Controllers
             if (added)
             {
                 var tool = await _mediator.Send(new GetToolByIdQuery(retrun.ToolId));
-                await _hubContext.Clients.All.SendAsync("ToolAvailable", tool.Name);
+                await _hubContext.Clients.All.SendAsync("ToolAvailable", tool?.Name);
             }
 
             return Ok(new ApiResponse<ToolDto>(added ? "success" : "fail"));
