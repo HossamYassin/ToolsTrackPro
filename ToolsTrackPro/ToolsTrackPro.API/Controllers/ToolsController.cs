@@ -58,7 +58,7 @@ namespace ToolsTrackPro.API.Controllers
         /// Add a new tool
         /// </summary>
         [HttpPost]
-        public async Task<ActionResult<int>> Add([FromBody] ToolDto tool)
+        public async Task<IActionResult> Add([FromBody] ToolDto tool)
         {
             var added = await _mediator.Send(new AddToolCommand(tool));
             return Ok(new ApiResponse<ToolDto>(added ? "success" : "fail"));

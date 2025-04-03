@@ -41,7 +41,7 @@ namespace ToolsTrackPro.API.Controllers
         /// Borrow tool
         /// </summary>
         [HttpPut("borrow")]
-        public async Task<ActionResult<int>> Borrow([FromBody] BorrowToolCommand borrow)
+        public async Task<IActionResult> Borrow([FromBody] BorrowToolCommand borrow)
         {
             var added = await _mediator.Send(borrow);
             return Ok(new ApiResponse<ToolDto>(added ? "success": "fail"));

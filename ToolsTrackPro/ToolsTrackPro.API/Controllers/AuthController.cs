@@ -61,7 +61,7 @@ namespace ToolsTrackPro.API.Controllers
         /// Add a new user
         /// </summary>
         [HttpPost("register")]
-        public async Task<ActionResult<int>> Add([FromBody] UserDto user)
+        public async Task<IActionResult> Add([FromBody] UserDto user)
         {
             var added = await _mediator.Send(new AddUserCommand(user));
             return Ok(new ApiResponse<UserDto>(added ? "success" : "fail"));
