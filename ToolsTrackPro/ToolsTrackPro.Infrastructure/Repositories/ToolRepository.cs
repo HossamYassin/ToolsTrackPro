@@ -135,7 +135,7 @@
         /// <summary>
         /// Get tools with Latest Transaction.
         /// </summary>
-        public async Task<List<ToolTransaction>> GetToolsWithLatestTransactionAsync()
+        public async Task<IEnumerable<ToolTransaction>> GetToolsWithLatestTransactionAsync()
         {
             var tools = new List<ToolTransaction>();
 

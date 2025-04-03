@@ -11,7 +11,7 @@
         Task<Tool?> GetByIdAsync(int toolId);
         Task<bool> UpdateAsync(Tool tool);
         Task<bool> DeleteAsync(int toolId);
-        Task<List<ToolTransaction>> GetToolsWithLatestTransactionAsync();
+        Task<IEnumerable<ToolTransaction>> GetToolsWithLatestTransactionAsync();
     }
 
 }
