@@ -1,4 +1,5 @@
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
@@ -59,7 +60,8 @@ namespace ToolsTrackPro.API.Controllers
 
         /// <summary>
         /// Add a new user
-        /// </summary>
+        /// </summary>         
+        [Authorize]
         [HttpPost("register")]
         public async Task<IActionResult> Add([FromBody] UserDto user)
         {
