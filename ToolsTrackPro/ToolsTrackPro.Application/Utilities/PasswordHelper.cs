@@ -7,7 +7,7 @@
     {
         private const int SaltSize = 16; // 16-byte salt (128-bit)
         private const int HashSize = 32; // 32-byte hash (256-bit)
-        private const int Iterations = 100000; // 100,000+ iterations
+        private const int Iterations = 100000;
 
         /// <summary>
         /// Hashes a password using PBKDF2 with HMACSHA256.
